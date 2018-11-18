@@ -1,0 +1,34 @@
+language: ruby
+sudo: required
+services:
+- docker
+env:
+  global:
+  - QEMU_VER=v2.9.1
+  - DOCKER_USERNAME=supertylerc
+  matrix:
+  - PROJECT=ansible ARCH=amd64 TAG=amd64 ANSIBLE_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=ansible ARCH=armhf TAG=armhf ANSIBLE_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=ansible ARCH=amd64 TAG=amd64-2.6.8 ANSIBLE_VERSION=2.6.8 CHECK_COMMAND=version
+  - PROJECT=ansible ARCH=armhf TAG=armhf-2.6.8 ANSIBLE_VERSION=2.6.8 CHECK_COMMAND=version
+  - PROJECT=ansible ARCH=amd64 TAG=amd64-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=version
+  - PROJECT=ansible ARCH=armhf TAG=armhf-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=version
+
+branches:
+  only:
+  - master
+
+script:
+- cp $PROJECT/Dockerfile $PROJECT/Dockerfile.amd64
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+- docker pull $DOCKER_USERNAME/$PROJECT:$TAG
+- docker build -f $PROJECT/Dockerfile.$ARCH -t $DOCKER_USERNAME/$PROJECT:$TAG --build-arg ${PROJECT}_VERSION=$ANSIBLE_VERSION --cache-from $DOCKER_USERNAME/$PROJECT:$TAG $PROJECT
+- docker images
+- docker run $DOCKER_USERNAME/$PROJECT:$TAG --${CHECK_COMMAND}
+after_success:
+- >
+  if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+    echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+    docker push "${DOCKER_USERNAME}/${PROJECT}:${TAG}"
+  fi

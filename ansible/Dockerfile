@@ -1,0 +1,53 @@
+FROM alpine:3.8
+MAINTAINER "Tyler Christiansen <code@tylerc.me>"
+
+ARG ANSIBLE_VERSION=latest
+
+RUN adduser -D ansible
+
+RUN apk --no-cache add \
+    py2-pip \
+    gcc \
+    python-dev \
+    musl-dev \
+    make \
+    libffi-dev \
+    openssl-dev \
+    libxslt-dev \
+    libxslt \
+    openssl \
+  && pip install --upgrade pip \
+  && pip install cffi \
+  && pip install \
+    requests
+RUN [ "${ANSIBLE_VERSION}" = "latest" ] \
+  && \
+      pip install ansible \
+  || \
+      pip install ansible=="${ANSIBLE_VERSION}"
+RUN apk del \
+    binutils \
+    isl \
+    libgomp \
+    libatomic \
+    pkgconf \
+    mpfr3 \
+    mpc1 \
+    gcc \
+    python-dev \
+    musl-dev \
+    libffi-dev \
+    openssl-dev \
+    libxslt-dev \
+    make \
+  && rm -rf /usr/share/man/man1 \
+  && rm -rf /usr/share/man/man7 \
+  && rm -rf /tmp/* \
+  && mkdir -p /etc/ansible
+
+VOLUME ["/etc/ansible"]
+
+USER ansible
+WORKDIR /etc/ansible
+
+ENTRYPOINT ["ansible-playbook"]
