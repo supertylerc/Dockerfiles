@@ -19,13 +19,13 @@ RUN apk --no-cache add \
   && pip install --upgrade pip \
   && pip install cffi \
   && pip install \
-    requests
-RUN [ "${ANSIBLE_VERSION}" = "latest" ] \
-  && \
-      pip install ansible \
-  || \
-      pip install ansible=="${ANSIBLE_VERSION}"
-RUN apk del \
+    requests \
+  && [ "${ANSIBLE_VERSION}" = "latest" ] \
+     && \
+         pip install ansible \
+     || \
+         pip install ansible=="${ANSIBLE_VERSION}" \
+  && apk del \
     binutils \
     isl \
     libgomp \
