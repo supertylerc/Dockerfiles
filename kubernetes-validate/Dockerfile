@@ -1,0 +1,28 @@
+FROM alpine:3.8
+MAINTAINER "Tyler Christiansen <code@tylerc.me>"
+
+ARG KUBERNETES_VALIDATE_VERSION=latest
+
+RUN adduser -D kubernetes
+
+RUN apk --no-cache add \
+    py2-pip \
+  && pip install --upgrade pip \
+  && pip install \
+    requests \
+  && [ "${KUBERNETES_VALIDATE_VERSION}" = "latest" ] \
+     && \
+       pip install kubernetes-validate \
+     || \
+       pip install kubernetes-validate=="${KUBERNETES_VALIDATE_VERSION}" \
+  && rm -rf /usr/share/man/man1 \
+  && rm -rf /usr/share/man/man7 \
+  && rm -rf /tmp/* \
+  && mkdir -p /manifests
+
+VOLUME ["/manifests"]
+
+USER kubernetes
+WORKDIR /manifests
+
+ENTRYPOINT ["kubernetes-validate"]
