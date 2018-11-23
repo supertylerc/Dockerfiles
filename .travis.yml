@@ -36,6 +36,14 @@ env:
   - PROJECT=kubernetes-validate ARCH=amd64 TAG=armhf KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=version
   - PROJECT=kubernetes-validate ARCH=armhf TAG=amd64-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
   - PROJECT=kubernetes-validate ARCH=armhf TAG=armhf-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
+  # molecule
+  # Provide latest and latest-1 because there is no latest-2
+  - PROJECT=molecule ARCH=amd64 TAG=amd64 MOLECULE_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=amd64 TAG=armhf MOLECULE_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=armhf TAG=amd64-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=armhf TAG=armhf-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=armhf TAG=amd64-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=armhf TAG=armhf-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=version
 
 
 branches:
