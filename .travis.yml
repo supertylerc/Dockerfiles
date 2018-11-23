@@ -30,6 +30,12 @@ env:
   - PROJECT=ansible-review ARCH=amd64 TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
   - PROJECT=ansible-review ARCH=armhf TAG=amd64-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
   - PROJECT=ansible-review ARCH=armhf TAG=armhf-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
+  # kubernetes-validate
+  # Provide latest and latest-1 because there is no latest-2
+  - PROJECT=kubernetes-validate ARCH=amd64 TAG=amd64 KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=kubernetes-validate ARCH=amd64 TAG=armhf KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=kubernetes-validate ARCH=armhf TAG=amd64-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
+  - PROJECT=kubernetes-validate ARCH=armhf TAG=armhf-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
 
 
 branches:
