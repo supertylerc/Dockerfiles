@@ -7,19 +7,24 @@ env:
   - QEMU_VER=v3.0.0
   - DOCKER_USERNAME=supertylerc
   matrix:
+  # ansible
   - PROJECT=ansible ARCH=amd64 TAG=amd64 ANSIBLE_VERSION=latest CHECK_COMMAND=version
   - PROJECT=ansible ARCH=armhf TAG=armhf ANSIBLE_VERSION=latest CHECK_COMMAND=version
   - PROJECT=ansible ARCH=amd64 TAG=amd64-2.6.8 ANSIBLE_VERSION=2.6.8 CHECK_COMMAND=version
   - PROJECT=ansible ARCH=armhf TAG=armhf-2.6.8 ANSIBLE_VERSION=2.6.8 CHECK_COMMAND=version
   - PROJECT=ansible ARCH=amd64 TAG=amd64-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=version
   - PROJECT=ansible ARCH=armhf TAG=armhf-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=version
-
+  # ansible-lint
   - PROJECT=ansible-lint ARCH=amd64 TAG=amd64 ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
   - PROJECT=ansible-lint ARCH=armhf TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
   - PROJECT=ansible-lint ARCH=amd64 TAG=amd64-3.4.23 ANSIBLE_LINT_VERSION=3.4.23 CHECK_COMMAND=version
   - PROJECT=ansible-lint ARCH=armhf TAG=armhf-3.4.23 ANSIBLE_LINT_VERSION=3.4.23 CHECK_COMMAND=version
   - PROJECT=ansible-lint ARCH=amd64 TAG=amd64-3.3.3 ANSIBLE_LINT_VERSION=3.3.3 CHECK_COMMAND=version
   - PROJECT=ansible-lint ARCH=armhf TAG=armhf-3.3.3 ANSIBLE_LINT_VERSION=3.3.3 CHECK_COMMAND=version
+  # ansigenome
+  # Don't provide a latest version or previous version because even 0.6.0 is both the latest and old
+  - PROJECT=ansigenome ARCH=amd64 TAG=amd64-0.6.0 ANSIGENOME_VERSION=0.6.0 CHECK_COMMAND=version
+  - PROJECT=ansigenome ARCH=armhf TAG=armhf-0.6.0 ANSIGENOME_VERSION=0.6.0 CHECK_COMMAND=version
 
 branches:
   only:
