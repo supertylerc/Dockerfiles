@@ -23,8 +23,14 @@ RUN apk --no-cache add \
     mpfr3 \
     mpc1 \
     musl-dev \
-    linux-headers
+    linux-headers \
+  && rm -rf /usr/share/man/man1 \
+  && rm -rf /usr/share/man/man7 \
+  && rm -rf /tmp/* \
+  && mkdir -p /etc/ansible/roles
 
+VOLUME ["/etc/ansible/roles"]
 USER ansible
+WORKDIR /etc/ansible/roles
 
 ENTRYPOINT ["molecule"]
