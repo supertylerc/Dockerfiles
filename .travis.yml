@@ -15,20 +15,21 @@ env:
   - PROJECT=ansible ARCH=amd64 TAG=amd64-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=version
   - PROJECT=ansible ARCH=armhf TAG=armhf-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=version
   # ansible-lint
+  # Only provide latest and latest-1 because latest-2 is from 2016
   - PROJECT=ansible-lint ARCH=amd64 TAG=amd64 ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
   - PROJECT=ansible-lint ARCH=armhf TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
   - PROJECT=ansible-lint ARCH=amd64 TAG=amd64-3.4.23 ANSIBLE_LINT_VERSION=3.4.23 CHECK_COMMAND=version
   - PROJECT=ansible-lint ARCH=armhf TAG=armhf-3.4.23 ANSIBLE_LINT_VERSION=3.4.23 CHECK_COMMAND=version
-  - PROJECT=ansible-lint ARCH=amd64 TAG=amd64-3.3.3 ANSIBLE_LINT_VERSION=3.3.3 CHECK_COMMAND=version
-  - PROJECT=ansible-lint ARCH=armhf TAG=armhf-3.3.3 ANSIBLE_LINT_VERSION=3.3.3 CHECK_COMMAND=version
   # ansigenome
   # Don't provide a latest version or previous version because even 0.6.0 is both the latest and old
   - PROJECT=ansigenome ARCH=amd64 TAG=amd64-0.6.0 ANSIGENOME_VERSION=0.6.0 CHECK_COMMAND=version
   - PROJECT=ansigenome ARCH=armhf TAG=armhf-0.6.0 ANSIGENOME_VERSION=0.6.0 CHECK_COMMAND=version
   # ansible-review
-  # Provide latest and one patch version because previous minors aren't maintained
+  # Provide latest and one patch version because previous minors aren't maintained and are from 2016
   - PROJECT=ansible-review ARCH=amd64 TAG=amd64 ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible-review ARCH=armhf TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=ansible-review ARCH=amd64 TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=ansible-review ARCH=armhf TAG=amd64-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
+  - PROJECT=ansible-review ARCH=armhf TAG=armhf-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
 
 
 branches:
