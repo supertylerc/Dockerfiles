@@ -1,0 +1,34 @@
+FROM docker:latest
+MAINTAINER "Tyler Christiansen <code@tylerc.me>"
+
+ARG MOLECULE_VERSION=latest
+RUN apk --no-cache add \
+    gcc \
+    musl-dev \
+    python-dev \
+    linux-headers \
+    py2-pip \
+  && pip install --upgrade pip \
+  && pip install cffi \
+  && pip install requests \
+  && [ "${MOLECULE_VERSION}" = "latest" ] \
+    && pip install molecule docker \
+    || pip install molecule=="${MOLECULE_VERSION}" docker \
+  && apk del \
+    gcc \
+    python-dev \
+    binutils \
+    isl \
+    libgomp \
+    libatomic \
+    pkgconf \
+    mpfr3 \
+    mpc1 \
+    musl-dev \
+    linux-headers \
+  && rm -rf /usr/share/man/man1 \
+  && rm -rf /usr/share/man/man7 \
+  && rm -rf /tmp/* \
+  && mkdir -p /etc/ansible/roles
+
+ENTRYPOINT ["molecule"]
