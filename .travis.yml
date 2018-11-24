@@ -27,22 +27,21 @@ env:
   # ansible-review
   # Provide latest and one patch version because previous minors aren't maintained and are from 2016
   - PROJECT=ansible-review ARCH=amd64 TAG=amd64 ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible-review ARCH=amd64 TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible-review ARCH=armhf TAG=amd64-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
+  - PROJECT=ansible-review ARCH=armhf TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=ansible-review ARCH=amd64 TAG=amd64-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
   - PROJECT=ansible-review ARCH=armhf TAG=armhf-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
   # kubernetes-validate
   # Provide latest and latest-1 because there is no latest-2
   - PROJECT=kubernetes-validate ARCH=amd64 TAG=amd64 KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=kubernetes-validate ARCH=amd64 TAG=armhf KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=kubernetes-validate ARCH=armhf TAG=amd64-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
+  - PROJECT=kubernetes-validate ARCH=armhf TAG=armhf KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=kubernetes-validate ARCH=amd64 TAG=amd64-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
   - PROJECT=kubernetes-validate ARCH=armhf TAG=armhf-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
   # molecule
-  # Provide latest and latest-1 because there is no latest-2
   - PROJECT=molecule ARCH=amd64 TAG=amd64 MOLECULE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=amd64 TAG=armhf MOLECULE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=armhf TAG=amd64-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=armhf TAG=armhf MOLECULE_VERSION=latest CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=amd64 TAG=amd64-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=version
   - PROJECT=molecule ARCH=armhf TAG=armhf-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=armhf TAG=amd64-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=amd64 TAG=amd64-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=version
   - PROJECT=molecule ARCH=armhf TAG=armhf-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=version
 
 
