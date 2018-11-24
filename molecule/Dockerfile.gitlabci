@@ -36,5 +36,3 @@ RUN apk --no-cache add \
   && rm -rf /usr/share/man/man7 \
   && rm -rf /tmp/* \
   && mkdir -p /etc/ansible/roles
-
-ENTRYPOINT ["molecule"]
