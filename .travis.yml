@@ -8,45 +8,45 @@ env:
   - DOCKER_USERNAME=supertylerc
   matrix:
   # ansible
-  - PROJECT=ansible ARCH=amd64 TAG=amd64 ANSIBLE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible ARCH=armhf TAG=armhf ANSIBLE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible ARCH=amd64 TAG=amd64-2.6.8 ANSIBLE_VERSION=2.6.8 CHECK_COMMAND=version
-  - PROJECT=ansible ARCH=armhf TAG=armhf-2.6.8 ANSIBLE_VERSION=2.6.8 CHECK_COMMAND=version
-  - PROJECT=ansible ARCH=amd64 TAG=amd64-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=version
-  - PROJECT=ansible ARCH=armhf TAG=armhf-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=version
+  - PROJECT=ansible ARCH=amd64 TAG=amd64 ANSIBLE_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=ansible ARCH=armhf TAG=armhf ANSIBLE_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=ansible ARCH=amd64 TAG=amd64-2.6.8 ANSIBLE_VERSION=2.6.8 CHECK_COMMAND=--version
+  - PROJECT=ansible ARCH=armhf TAG=armhf-2.6.8 ANSIBLE_VERSION=2.6.8 CHECK_COMMAND=--version
+  - PROJECT=ansible ARCH=amd64 TAG=amd64-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=--version
+  - PROJECT=ansible ARCH=armhf TAG=armhf-2.5.11 ANSIBLE_VERSION=2.5.11 CHECK_COMMAND=--version
   # ansible-lint
   # Only provide latest and latest-1 because latest-2 is from 2016
-  - PROJECT=ansible-lint ARCH=amd64 TAG=amd64 ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible-lint ARCH=armhf TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible-lint ARCH=amd64 TAG=amd64-3.4.23 ANSIBLE_LINT_VERSION=3.4.23 CHECK_COMMAND=version
-  - PROJECT=ansible-lint ARCH=armhf TAG=armhf-3.4.23 ANSIBLE_LINT_VERSION=3.4.23 CHECK_COMMAND=version
+  - PROJECT=ansible-lint ARCH=amd64 TAG=amd64 ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=ansible-lint ARCH=armhf TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=ansible-lint ARCH=amd64 TAG=amd64-3.4.23 ANSIBLE_LINT_VERSION=3.4.23 CHECK_COMMAND=--version
+  - PROJECT=ansible-lint ARCH=armhf TAG=armhf-3.4.23 ANSIBLE_LINT_VERSION=3.4.23 CHECK_COMMAND=--version
   # ansigenome
   # Don't provide a latest version or previous version because even 0.6.0 is both the latest and old
-  - PROJECT=ansigenome ARCH=amd64 TAG=amd64-0.6.0 ANSIGENOME_VERSION=0.6.0 CHECK_COMMAND=version
-  - PROJECT=ansigenome ARCH=armhf TAG=armhf-0.6.0 ANSIGENOME_VERSION=0.6.0 CHECK_COMMAND=version
+  - PROJECT=ansigenome ARCH=amd64 TAG=amd64-0.6.0 ANSIGENOME_VERSION=0.6.0 CHECK_COMMAND=--version
+  - PROJECT=ansigenome ARCH=armhf TAG=armhf-0.6.0 ANSIGENOME_VERSION=0.6.0 CHECK_COMMAND=--version
   # ansible-review
   # Provide latest and one patch version because previous minors aren't maintained and are from 2016
-  - PROJECT=ansible-review ARCH=amd64 TAG=amd64 ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible-review ARCH=armhf TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=ansible-review ARCH=amd64 TAG=amd64-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
-  - PROJECT=ansible-review ARCH=armhf TAG=armhf-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=version
+  - PROJECT=ansible-review ARCH=amd64 TAG=amd64 ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=ansible-review ARCH=armhf TAG=armhf ANSIBLE_LINT_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=ansible-review ARCH=amd64 TAG=amd64-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=--version
+  - PROJECT=ansible-review ARCH=armhf TAG=armhf-0.13.8 ANSIBLE_LINT_VERSION=0.13.8 CHECK_COMMAND=--version
   # kubernetes-validate
   # Provide latest and latest-1 because there is no latest-2
-  - PROJECT=kubernetes-validate ARCH=amd64 TAG=amd64 KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=kubernetes-validate ARCH=armhf TAG=armhf KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=kubernetes-validate ARCH=amd64 TAG=amd64-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
-  - PROJECT=kubernetes-validate ARCH=armhf TAG=armhf-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=version
+  - PROJECT=kubernetes-validate ARCH=amd64 TAG=amd64 KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=kubernetes-validate ARCH=armhf TAG=armhf KUBERNETES_VALIDATE_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=kubernetes-validate ARCH=amd64 TAG=amd64-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=--version
+  - PROJECT=kubernetes-validate ARCH=armhf TAG=armhf-1.11.5 KUBERNETES_VALIDATE_VERSION=1.11.5 CHECK_COMMAND=--version
   # molecule
   # Cheat with the $ARCH variable to build a container for GitLab CI
-  - PROJECT=molecule ARCH=amd64 TAG=amd64 MOLECULE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=armhf TAG=armhf MOLECULE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=gitlabci TAG=gitlab MOLECULE_VERSION=latest CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=amd64 TAG=amd64-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=armhf TAG=armhf-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=gitlabci TAG=gitlab-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=amd64 TAG=amd64-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=armhf TAG=armhf-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=version
-  - PROJECT=molecule ARCH=gitlabci TAG=gitlab-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=version
+  - PROJECT=molecule ARCH=amd64 TAG=amd64 MOLECULE_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=molecule ARCH=armhf TAG=armhf MOLECULE_VERSION=latest CHECK_COMMAND=--version
+  - PROJECT=molecule ARCH=gitlabci TAG=gitlab MOLECULE_VERSION=latest CHECK_COMMAND=ls
+  - PROJECT=molecule ARCH=amd64 TAG=amd64-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=--version
+  - PROJECT=molecule ARCH=armhf TAG=armhf-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=--version
+  - PROJECT=molecule ARCH=gitlabci TAG=gitlab-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=ls
+  - PROJECT=molecule ARCH=amd64 TAG=amd64-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=--version
+  - PROJECT=molecule ARCH=armhf TAG=armhf-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=--version
+  - PROJECT=molecule ARCH=gitlabci TAG=gitlab-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=ls
 
 
 branches:
@@ -64,7 +64,7 @@ script:
 - docker pull $DOCKER_USERNAME/$PROJECT:$TAG || true
 - docker build -f $PROJECT/Dockerfile.$ARCH -t $DOCKER_USERNAME/$PROJECT:$TAG --build-arg ${VERSION}=${!VERSION} --cache-from $DOCKER_USERNAME/$PROJECT:$TAG $PROJECT
 - docker images
-- docker run $DOCKER_USERNAME/$PROJECT:$TAG --${CHECK_COMMAND}
+- docker run $DOCKER_USERNAME/$PROJECT:$TAG ${CHECK_COMMAND}
 after_success:
 - >
   if [[ "$TRAVIS_BRANCH" == "master" ]]; then
