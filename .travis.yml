@@ -57,14 +57,14 @@ before_script:
 script:
 - cp $PROJECT/Dockerfile $PROJECT/Dockerfile.amd64
 # prepare qemu
-- docker run --rm --privileged multiarch/qemu-user-static:register --reset
-- docker pull $DOCKER_USERNAME/$PROJECT:$TAG || true
-- docker build -f $PROJECT/Dockerfile.$ARCH -t $DOCKER_USERNAME/$PROJECT:$TAG --build-arg ${VERSION}=${!VERSION} --cache-from $DOCKER_USERNAME/$PROJECT:$TAG $PROJECT
+- travis_retry docker run --rm --privileged multiarch/qemu-user-static:register --reset
+- travis_retry docker pull $DOCKER_USERNAME/$PROJECT:$TAG || true
+- travis_retry docker build -f $PROJECT/Dockerfile.$ARCH -t $DOCKER_USERNAME/$PROJECT:$TAG --build-arg ${VERSION}=${!VERSION} --cache-from $DOCKER_USERNAME/$PROJECT:$TAG $PROJECT
 - docker images
 - docker run $DOCKER_USERNAME/$PROJECT:$TAG ${CHECK_COMMAND}
 after_success:
 - >
   if [[ "$TRAVIS_BRANCH" == "master" ]]; then
     echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-    docker push "${DOCKER_USERNAME}/${PROJECT}:${TAG}"
+    travis_retry docker push "${DOCKER_USERNAME}/${PROJECT}:${TAG}"
   fi
