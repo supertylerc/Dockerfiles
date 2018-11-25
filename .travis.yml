@@ -39,13 +39,10 @@ env:
   # molecule
   # Cheat with the $ARCH variable to build a container for GitLab CI
   - PROJECT=molecule ARCH=amd64 TAG=amd64 MOLECULE_VERSION=latest CHECK_COMMAND=--version
-  - PROJECT=molecule ARCH=armhf TAG=armhf MOLECULE_VERSION=latest CHECK_COMMAND=--version
   - PROJECT=molecule ARCH=gitlabci TAG=gitlab MOLECULE_VERSION=latest CHECK_COMMAND=ls
   - PROJECT=molecule ARCH=amd64 TAG=amd64-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=--version
-  - PROJECT=molecule ARCH=armhf TAG=armhf-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=--version
   - PROJECT=molecule ARCH=gitlabci TAG=gitlab-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=ls
   - PROJECT=molecule ARCH=amd64 TAG=amd64-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=--version
-  - PROJECT=molecule ARCH=armhf TAG=armhf-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=--version
   - PROJECT=molecule ARCH=gitlabci TAG=gitlab-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=ls
 
 
