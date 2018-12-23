@@ -1,0 +1,25 @@
+FROM multiarch/alpine:armhf-v3.8
+MAINTAINER "Tyler Christiansen <code@tylerc.me>"
+
+ARG RADON_VERSION=latest
+
+RUN adduser -D radon
+
+RUN apk --no-cache add \
+    py2-pip \
+  && pip install --upgrade pip \
+  && [ "${RADON_VERSION}" = "latest" ] \
+     && \
+       pip install radon \
+     || \
+       pip install radon=="${RADON_VERSION}" \
+  && rm -rf /usr/share/man/man1 \
+  && rm -rf /usr/share/man/man7 \
+  && rm -rf /tmp/*
+
+VOLUME ["/code"]
+
+USER radon
+WORKDIR /code
+
+ENTRYPOINT ["radon"]

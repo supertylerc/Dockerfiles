@@ -1,0 +1,25 @@
+FROM alpine:3.8
+MAINTAINER "Tyler Christiansen <code@tylerc.me>"
+
+ARG BLACK_VERSION=latest
+
+RUN adduser -D black
+
+RUN apk --no-cache add \
+    py2-pip \
+  && pip install --upgrade pip \
+  && [ "${BLACK_VERSION}" = "latest" ] \
+     && \
+       pip install black \
+     || \
+       pip install black=="${BLACK_VERSION}" \
+  && rm -rf /usr/share/man/man1 \
+  && rm -rf /usr/share/man/man7 \
+  && rm -rf /tmp/*
+
+VOLUME ["/code"]
+
+USER black
+WORKDIR /code
+
+ENTRYPOINT ["black"]
