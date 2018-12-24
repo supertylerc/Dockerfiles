@@ -6,13 +6,13 @@ ARG BLACK_VERSION=latest
 RUN adduser -D black
 
 RUN apk --no-cache add \
-    py2-pip \
-  && pip install --upgrade pip \
+    py3-pip \
+  && pip3 install --upgrade pip \
   && [ "${BLACK_VERSION}" = "latest" ] \
      && \
-       pip install black \
+       pip3 install black \
      || \
-       pip install black=="${BLACK_VERSION}" \
+       pip3 install black=="${BLACK_VERSION}" \
   && rm -rf /usr/share/man/man1 \
   && rm -rf /usr/share/man/man7 \
   && rm -rf /tmp/*

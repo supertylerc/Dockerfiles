@@ -6,14 +6,14 @@ ARG RADON_VERSION=latest
 RUN adduser -D radon
 
 RUN apk --no-cache add \
-    py2-pip \
-  && pip install --upgrade pip \
-  && pip install colorama \
+    py3-pip \
+  && pip3 install --upgrade pip \
+  && pip3 install colorama \
   && [ "${RADON_VERSION}" = "latest" ] \
      && \
-       pip install radon \
+       pip3 install radon \
      || \
-       pip install radon=="${RADON_VERSION}" \
+       pip3 install radon=="${RADON_VERSION}" \
   && rm -rf /usr/share/man/man1 \
   && rm -rf /usr/share/man/man7 \
   && rm -rf /tmp/*
