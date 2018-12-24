@@ -44,6 +44,18 @@ env:
   - PROJECT=molecule ARCH=gitlabci TAG=gitlab-2.18.1 MOLECULE_VERSION=2.18.1 CHECK_COMMAND=ls
   - PROJECT=molecule ARCH=amd64 TAG=amd64-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=--version
   - PROJECT=molecule ARCH=gitlabci TAG=gitlab-2.17.0 MOLECULE_VERSION=2.17.0 CHECK_COMMAND=ls
+  # Python code analysis images
+  # flake8
+  - PROJECT=flake8 ARCH=amd64 TAG=amd64 FLAKE8_VERSION=latest CHECK_COMMAND=--help
+  - PROJECT=flake8 ARCH=armhf TAG=armhf FLAKE8_VERSION=latest CHECK_COMMAND=--help
+  # black
+  - PROJECT=black ARCH=amd64 TAG=amd64 BLACK_VERSION=latest CHECK_COMMAND=--help
+  - PROJECT=black ARCH=armhf TAG=armhf BLACK_VERSION=latest CHECK_COMMAND=--help
+  # radon
+  - PROJECT=radon ARCH=amd64 TAG=amd64 RADON_VERSION=latest CHECK_COMMAND=--help
+  - PROJECT=radon ARCH=armhf TAG=armhf RADON_VERSION=latest CHECK_COMMAND=--help
+
+
 
 
 branches:
