@@ -54,6 +54,8 @@ env:
   # radon
   - PROJECT=radon ARCH=amd64 TAG=amd64 RADON_VERSION=latest CHECK_COMMAND=--help
   - PROJECT=radon ARCH=armhf TAG=armhf RADON_VERSION=latest CHECK_COMMAND=--help
+  # Netbox
+  - PROJECT=netbox ARCH=armhf TAG=armhf NETBOX_VERSION=latest CHECK_COMMAND=--help
 
 
 
